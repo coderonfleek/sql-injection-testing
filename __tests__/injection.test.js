@@ -4,17 +4,6 @@ const request = supertest(app);
 
 const db = require("../db");
 
-/* beforeEach(() => {
-    let createTableSQL = "CREATE TABLE IF NOT EXISTS `users` ( `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL , `email` VARCHAR(100) NOT NULL , `name` VARCHAR(240) NOT NULL)";
-
-    db.run(createTableSQL, function (err) {
-        let insert = "INSERT INTO users (name, email) VALUES (?,?)";
-        db.run(insert, ["user1@test.com", "User 1"]);
-        db.run(insert, ["user2@test.com", "User 2"]);
-        db.run(insert, ["user3@test.com", "User 3"]);
-    })
-    
-}); */
 
 let createTableSQL = "CREATE TABLE IF NOT EXISTS `users` ( `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL , `email` VARCHAR(100) NOT NULL , `name` VARCHAR(240) NOT NULL)";
 
