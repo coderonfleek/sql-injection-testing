@@ -17,9 +17,9 @@ function getUsers(req, res) {
 
 function getUser(req, res) {
 
-    let sql = `SELECT * FROM users WHERE id=?`;
+    let sql = `SELECT * FROM users WHERE id='${req.body.id}'`;
 
-    db.all(sql, [req.body.id], function (err, data) {
+    db.all(sql, function (err, data) {
         if(err) throw err
         
         res.json({
