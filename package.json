@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx nodemon ./server",
-    "start": "node ./server",
-    "test": "jest"
+    "start": "node ./server"
   },
   "keywords": [],
   "author": "",
