@@ -4,7 +4,7 @@ function getUsers(req, res) {
     
     let sql = `SELECT * FROM users`;
 
-    db.query(sql, function (err, data, fields) {
+    db.all(sql, function (err, data) {
         if(err) throw err
         
         res.json({
@@ -17,14 +17,14 @@ function getUsers(req, res) {
 
 function getUser(req, res) {
 
-    let sql = `SELECT * FROM users WHERE id='${req.params.id}'`;
+    let sql = `SELECT * FROM users WHERE id=?`;
 
-    db.query(sql, function (err, data, fields) {
+    db.all(sql, [req.body.id], function (err, data) {
         if(err) throw err
         
         res.json({
             status : 200,
-            data : data[0],
+            data,
             message : "User record retrieved"
         })
     })
@@ -33,15 +33,13 @@ function getUser(req, res) {
 
 function createUser(req, res) {
     
-    console.log(req);
     let sql = `INSERT INTO users(email, name) VALUES ('${req.body.email}', '${req.body.name}')`;
 
-    db.query(sql, function (err, data, fields) {
+    db.run(sql, function (err) {
         if(err) throw err
         
         res.json({
             status : 200,
-            data,
             message : "User successfully created"
         })
     })
